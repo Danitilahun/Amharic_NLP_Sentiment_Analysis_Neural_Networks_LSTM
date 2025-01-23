@@ -1,0 +1,61 @@
+# Byte-compiled / optimized / compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VS Code settings
+.vscode/
+
+# Environment variables
+.env
+
+# Virtual environment
+venv/
+env/
+
+# MacOS files
+.DS_Store
+
+# Logs
+*.log
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+*.egg-info/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# MyPy
+.mypy_cache/
+
+# Test and debugging outputs
+.tox/
+.nox/
+*.cover
+*.py,cover
+*.hypothesis/
+
+# Temp files
+*.tmp
+*.temp
+*.out
+*.pid
+*.bak
+*.swp
+*.swo
+*~
+
+# IDE settings
+.idea/
+
+# System files
+Thumbs.db
