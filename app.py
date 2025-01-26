@@ -15,7 +15,7 @@ sentiment_model = SentimentModel(
     embedding_dir=embeddings_dir,
     embedding_file='embedding_dictionary.pkl',
     model_path=model_path,
-    max_len=50
+    max_len=100
 )
 
 @app.route('/')
