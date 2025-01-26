@@ -34,7 +34,7 @@ def analyze():
 
     return jsonify({
         'sentiment': label,
-        'probability': probability * 100  # Percentage
+        'probability': float(probability) * 100  # Percentage
     })
 
 if __name__ == '__main__':
