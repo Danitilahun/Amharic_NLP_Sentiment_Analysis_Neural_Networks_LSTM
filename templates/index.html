@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 2.5rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .container {
+            background: #ffffff;
+            padding: 50px; 
+            border-radius: 16px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: popIn 1s ease-in-out;
+            max-width: 900px; /* Wider container */
+            width: 90%;
+        }
+        textarea {
+            width: 95%; 
+            max-width: 95%;
+            height: 150px; 
+            padding: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #f7f7f7;
+            box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            resize: none;
+            outline: none;
+            font-size: 1.1rem;
+        }
+        button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 600;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes popIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>🌟 Sentiment Analysis 🌟</h1>
+        <div class="container">
+            <textarea id="textInput" placeholder="Enter text to analyze sentiment..."></textarea>
+            <button onclick="analyzeText()">Analyze</button>
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function analyzeText() {
+            const text = document.getElementById('textInput').value;
+            const resultDiv = document.getElementById('result');
+
+            resultDiv.textContent = 'Analyzing...';
+            resultDiv.style.color = '#764ba2';
+
+            anime({
+                targets: resultDiv,
+                opacity: [0, 1],
+                easing: 'easeInOutQuad',
+                duration: 1000
+            });
+
+            axios.post('/analyze', { text: text })
+                .then(response => {
+                    const sentiment = response.data.sentiment;
+
+                    let color = '';
+                    if (sentiment === 'positive') color = '#28a745'; 
+                    else if (sentiment === 'negative') color = '#dc3545'; 
+                    else color = '#ffc107';
+
+                    resultDiv.textContent = `Sentiment: ${sentiment}`;
+                    resultDiv.style.color = color;
+
+                    anime({
+                        targets: resultDiv,
+                        scale: [0.8, 1.2],
+                        duration: 500,
+                        easing: 'easeInOutQuad'
+                    });
+                })
+                .catch(error => {
+                    resultDiv.textContent = 'Error analyzing sentiment.';
+                    resultDiv.style.color = '#dc3545'; 
+                    console.error(error);
+                });
+        }
+
+        document.getElementById('textInput').addEventListener('input', function () {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = '';
+        });
+    </script>
+</body>
+</html>

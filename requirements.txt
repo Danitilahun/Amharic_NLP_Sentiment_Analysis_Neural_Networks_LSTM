@@ -1,0 +1,6 @@
+Flask
+gunicorn
+pickle
+torch
+nltk
+numpy
