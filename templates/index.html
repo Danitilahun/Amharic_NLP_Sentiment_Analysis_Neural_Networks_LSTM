@@ -102,6 +102,7 @@
     </div>
 
     <script>
+         // Function to analyze sentiment
         function analyzeText() {
             const text = document.getElementById('textInput').value;
             const resultDiv = document.getElementById('result');
@@ -144,6 +145,12 @@
                     console.error(error);
                 });
         }
+
+        // Event listener to clear the result when the user starts typing
+        document.getElementById('textInput').addEventListener('input', function () {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = ''; // Clear the result
+        });
     </script>
 </body>
 </html>
