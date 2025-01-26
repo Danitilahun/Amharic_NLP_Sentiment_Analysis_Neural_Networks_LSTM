@@ -1,16 +1,13 @@
-# app.py
 import os
 from flask import Flask, request, jsonify, render_template
 from sentiment_model import SentimentModel
 
 app = Flask(__name__)
 
-# Initialize paths
 current_dir = os.path.dirname(os.path.abspath(__file__))
 embeddings_dir = os.path.join(current_dir, 'embeddings')
 model_path = os.path.join(current_dir, 'best_sentiment_model.pth')
 
-# Initialize and load the sentiment model
 sentiment_model = SentimentModel(
     embedding_dir=embeddings_dir,
     embedding_file='embedding_dictionary.pkl',
