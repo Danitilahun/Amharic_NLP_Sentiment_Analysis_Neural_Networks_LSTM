@@ -7,6 +7,7 @@ This project is designed to perform sentiment analysis on Amharic text using a n
 - [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Model Performance](#model-performance)
 - [API Endpoints](#api-endpoints)
 - [Dependencies](#dependencies)
 - [Contributing](#contributing)
@@ -74,6 +75,46 @@ The project is organized as follows:
 
 ---
 
+## Model Performance
+
+The model's performance on the **train** and **test** datasets is as follows:
+
+### Train Metrics:
+- **Accuracy**: 0.9461
+- **Precision**: 0.9757
+- **Recall**: 0.9185
+- **F1 Score**: 0.9464
+- **AUC**: 0.9781
+
+### Test Metrics:
+- **Accuracy**: 0.9219
+- **Precision**: 0.9522
+- **Recall**: 0.8937
+- **F1 Score**: 0.9220
+- **AUC**: 0.9575
+
+### Classification Report (Train):
+- **Class 0.0**:
+  - Precision: 0.9179
+  - Recall: 0.9754
+  - F1-Score: 0.9458
+  - Support: 26757.0
+- **Class 1.0**:
+  - Precision: 0.9756
+  - Recall: 0.9188
+
+### Classification Report (Test):
+- **Class 0.0**:
+  - Precision: 0.8939
+  - Recall: 0.9529
+  - F1-Score: 0.9218
+  - Support: 2983.0
+- **Class 1.0**:
+  - Precision: 0.9523
+  - Recall: 0.8937
+
+---
+
 ## API Endpoints
 
 The Flask application provides the following API endpoints:
@@ -137,4 +178,9 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 **Note**: This project is for educational purposes and may require further tuning for production use.
 ```
 
-This `README.md` file provides a clear and structured overview of your project, including how to set it up, use it, and contribute to it. It also includes information about the project structure, dependencies, and API endpoints.
+---
+
+### How to Use:
+1. Copy the entire content above.
+2. Paste it into your `README.md` file in your project repository.
+3. Save the file, and it will be ready to display on GitHub with all the metrics and details.
