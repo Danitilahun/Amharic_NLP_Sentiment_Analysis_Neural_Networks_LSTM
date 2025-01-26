@@ -25,20 +25,20 @@
             animation: fadeIn 2s ease-in-out;
         }
         .container {
-        background: #ffffff;
-        padding: 30px;
-        border-radius: 16px;
-        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        animation: popIn 1s ease-in-out;
-        max-width: 700px; /* Wider container */
-        width: 90%;
+            background: #ffffff;
+            padding: 50px; 
+            border-radius: 16px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: popIn 1s ease-in-out;
+            max-width: 900px; /* Wider container */
+            width: 90%;
         }
         textarea {
-            width: 95%; /* Adjust to be slightly smaller than the container */
-            max-width: 95%; /* Prevents growing larger than the container */
-            height: 150px; /* Increased height */
-            padding: 15px;
+            width: 95%; 
+            max-width: 95%;
+            height: 150px; 
+            padding: 20px;
             border: none;
             border-radius: 8px;
             background: #f7f7f7;
@@ -46,7 +46,7 @@
             margin-bottom: 20px;
             resize: none;
             outline: none;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
         button {
             display: inline-block;
@@ -102,7 +102,6 @@
     </div>
 
     <script>
-         // Function to analyze sentiment
         function analyzeText() {
             const text = document.getElementById('textInput').value;
             const resultDiv = document.getElementById('result');
@@ -110,7 +109,6 @@
             resultDiv.textContent = 'Analyzing...';
             resultDiv.style.color = '#764ba2';
 
-            // Simple animation for feedback
             anime({
                 targets: resultDiv,
                 opacity: [0, 1],
@@ -122,16 +120,14 @@
                 .then(response => {
                     const sentiment = response.data.sentiment;
 
-                    // Dynamic color for sentiment feedback
                     let color = '';
-                    if (sentiment === 'positive') color = '#28a745'; // green
-                    else if (sentiment === 'negative') color = '#dc3545'; // red
-                    else color = '#ffc107'; // yellow (neutral)
+                    if (sentiment === 'positive') color = '#28a745'; 
+                    else if (sentiment === 'negative') color = '#dc3545'; 
+                    else color = '#ffc107';
 
                     resultDiv.textContent = `Sentiment: ${sentiment}`;
                     resultDiv.style.color = color;
 
-                    // Animate result text
                     anime({
                         targets: resultDiv,
                         scale: [0.8, 1.2],
@@ -141,15 +137,14 @@
                 })
                 .catch(error => {
                     resultDiv.textContent = 'Error analyzing sentiment.';
-                    resultDiv.style.color = '#dc3545'; // red
+                    resultDiv.style.color = '#dc3545'; 
                     console.error(error);
                 });
         }
 
-        // Event listener to clear the result when the user starts typing
         document.getElementById('textInput').addEventListener('input', function () {
             const resultDiv = document.getElementById('result');
-            resultDiv.textContent = ''; // Clear the result
+            resultDiv.textContent = '';
         });
     </script>
 </body>
