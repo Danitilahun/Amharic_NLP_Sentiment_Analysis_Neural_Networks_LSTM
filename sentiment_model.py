@@ -6,7 +6,11 @@ import torch.nn as nn
 from nltk.tokenize import word_tokenize
 import nltk
 
+
 nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+nltk.download('punkt_tab')
 
 EMBEDDING_DIM = 100
 HIDDEN_DIM = 64
